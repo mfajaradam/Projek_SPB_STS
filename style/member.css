@@ -1,0 +1,15 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.unik {
+  color: #0d6efd;
+  font-weight: bolder;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.jumbotron {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
