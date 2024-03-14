@@ -3,11 +3,10 @@ include_once("../../controllers/database.php");
 
 $query = tampil_peminjaman(
     // "SELECT * FROM peminjaman"
-    "SELECT peminjaman.id, peminjaman.tgl_pinjam, peminjaman.tgl_kembali, peminjaman.no_identitas, 
-    peminjaman.kode_barang, peminjaman.jumlah, peminjaman.keperluan, peminjaman.status,peminjaman.id_login
-FROM peminjaman
-INNER JOIN barang ON peminjaman.kode_barang = barang.kode_barang
-INNER JOIN user ON peminjaman.id_login = user.id
+    "SELECT peminjaman.id, peminjaman.tgl_pinjam, peminjaman.tgl_kembali, peminjaman.no_identitas, user.nama, peminjaman.kode_barang, barang.nama_brg,peminjaman.jumlah, peminjaman.keperluan, peminjaman.status,peminjaman.id_login
+    FROM peminjaman
+    INNER JOIN barang ON peminjaman.kode_barang = barang.kode_barang
+    INNER JOIN user ON peminjaman.no_identitas = user.no_identitas;
 "
 );
 
@@ -215,7 +214,9 @@ INNER JOIN user ON peminjaman.id_login = user.id
                                             <th scope="col">Tanggal Pinjam</th>
                                             <th scope="col">Tanggal Kembali</th>
                                             <th scope="col">No Identitas</th>
+                                            <th scope="col">Nama Peminjam</th>
                                             <th scope="col">Kode Barang</th>
+                                            <th scope="col">Nama Barang</th>
                                             <th scope="col">Jumlah</th>
                                             <th scope="col">Keperluan</th>
                                             <th scope="col">Status</th>
@@ -231,7 +232,9 @@ INNER JOIN user ON peminjaman.id_login = user.id
                                                 <td><?= $data['tgl_pinjam'] ?></td>
                                                 <td><?= $data['tgl_kembali'] ?></td>
                                                 <td><?= $data['no_identitas'] ?></td>
+                                                <td><?= $data['nama'] ?></td>
                                                 <td><?= $data['kode_barang'] ?></td>
+                                                <td><?= $data['nama_brg'] ?></td>
                                                 <td><?= $data['jumlah'] ?></td>
                                                 <td><?= $data['keperluan'] ?></td>
                                                 <td><?= $data['status'] ?></td>
